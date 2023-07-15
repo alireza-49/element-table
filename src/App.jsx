@@ -4,6 +4,8 @@ import data from './data.js'
 import Context from './contex'
 import Element from './element'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import Modal from './modal.jsx'
+import CloseFullscreenIcon from '@mui/icons-material/CloseFullscreen';
 
 function App() {
   const query = new QueryClient({
@@ -12,7 +14,7 @@ function App() {
       staleTime:Infinity, 
     }
   })
-  const [modal,setModal] = useState([false,'hydrogen'])
+  const [modal,setModal] = useState([false,{}])
   const [data_orgnized,setData_orgnized] = useState([])
   const guide = [2,8,8,18,18,32,32]
   const orgnized = useRef([[],[],[],[],[],[],[],[],[]])
@@ -34,15 +36,30 @@ function App() {
   }
   useEffect(() => {
     orgnize()
-    console.log(orgnized.current)
     setData_orgnized(orgnized.current)
   },[])
   return (
-    <Context.Provider value={data}>
+    <Context.Provider value={[modal,setModal]}>
     <div className='header'> 
       
          
     </div>
+    {modal[0] ?(
+      <Modal >
+          <div className='modal-container'>
+            <div id='but'>            <h1>{modal[1].name}</h1>
+<button onClick={() => setModal([false,'hydrogen'])}><CloseFullscreenIcon /></button></div>
+            <div>
+              <img src={modal[1].bohr_model_image} alt="" />
+              <div>
+                <h3>atomic mass:{modal[1].atomic_mass}</h3>
+                <h3>{modal[1].appearance}</h3>
+              </div>
+            </div>
+            <h4>summary:{modal[1].summary}</h4>
+          </div>
+      </Modal>
+    ):null}
     <div className='content'>
       <div className='container'>
         {data_orgnized.map((item,index) => {
@@ -77,7 +94,6 @@ function App() {
             </div>)
           }
           else{
-            console.log(index)
               if (index == 7){
                 return(
                   <>

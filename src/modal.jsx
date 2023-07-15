@@ -7,8 +7,8 @@ const Modal = ({children}) => {
     }
     useEffect(()=> {
         document.getElementById('modal').appendChild(element.current)
-        return () => {document.removeChild(element.current)}
+        return () => {document.getElementById('modal').removeChild(element.current)}
     } ,[])
-    return createPortal(<>{children}</>,element.current)
+    return createPortal(<div className="Modal">{children}</div>,element.current)
 }
-export default Modal
+export default Modal;

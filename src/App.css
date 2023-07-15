@@ -5,10 +5,7 @@
 }
 body{
   width: 99%;
-  background: #5f2c82;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #49a09d, #5f2c82);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #49a09d, #5f2c82); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
+  background-image: linear-gradient(to top, #007adf 0%, #00ecbc 100%);
 }
 .row{
   display: flex;
@@ -38,4 +35,76 @@ body{
 .space{
   height: 130px;
   width: 100%;
+}
+.Modal{
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  background-color: rgba(122, 122, 122, 0.603);
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-container{
+  position: relative;
+  background-color: aliceblue;
+  padding: 10px;
+  border: 4px solid rgb(0, 255, 213);
+  border-radius: 10px;
+  animation: modal 0.5s 0s 1 normal forwards;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-image: linear-gradient(to top, lightgrey 0%, lightgrey 1%, #e0e0e0 26%, #efefef 48%, #d9d9d9 75%, #bcbcbc 100%);
+}
+@keyframes modal{
+  0%{
+    height: 30px;
+    width: 500px;
+  }
+  100%{
+    height: 400px;
+    width: 600px;
+  }
+}
+.modal-container h1{
+  color: #740000;
+}
+.modal-container>div{
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+  border: 1px solid black;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.modal-container>h4{
+  font-size: 15px;
+  width: 70%;
+  border: 1px solid black;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.modal-container button{
+  border: none;
+  background-color: #ff0000;
+  width: 50px;
+  height: 50px;
+  
+}
+#but{
+  border: none;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  
 }
